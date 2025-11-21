@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        body {
+          background-image: url("Background.jpg");
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }
+        </style>
+</html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Bar Example</title>
+    <style>
+        .search-container {
+            margin-bottom: 20px;
+        }
+        .search-input {
+            padding: 10px;
+            width: 300px;
+            font-size: 16px;
+        }
+        .list-item {
+            margin: 5px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container" class="button list">
+        <input type="text" id="search-bar" class="search-input" placeholder="Search...">
+    </div>
+    <ul id="item-list">
+        <li class="list-item" style="color: white;">Chin Chin</li>
+        <button onclick="location.href='Form.html'">chin chin</button>
+        <li class="list-item" style="color: white;">Special Chin Chin</li>
+        <li class="list-item" style="color: white;">Peanut</li>
+        <li class="list-item" style="color: white;">Cake</li>
+        <li class="list-item" style="color: white;">Cup Cakes</li>
+        <li class="list-item" style="color: white;">Milky Doughnut</li>
+        <li class="list-item" style="color: white;">Scrambled eggs</li>
+        <li class="list-item" style="color: white;">Puff Puff</li>
+        <li class="list-item" style="color: white;">Puff Puff Special</li>
+        <li class="list-item" style="color: white;">doughnut</li>
+        <li class="list-item" style="color: white;">Fish pie</li>
+        <li class="list-item" style="color: white;">Meat pie</li>
+        <li class="list-item" style="color: white;">Chicken Pie</li>
+        <li class="list-item" style="color: white;">Speciall pie</li>
+        <li class="list-item" style="color: white;">Scorn</li>
+        <li class="list-item" style="color: white;">Fish roll</li>
+        <li class="list-item" style="color: white;">Zobo drink</li>
+        <li class="list-item" style="color: white;">Tiger nut drink</li>
+        <li class="list-item" style="color: white;">Smoothie (Input fruit combination)</li>
+        <li class="list-item" style="color: white;">Special doughnut</li>
+    </ul>
+
+    <script>
+        document.getElementById('search-bar').addEventListener('keyup', function() {
+            let filter = this.value.toUpperCase();
+            let items = document.querySelectorAll('#item-list .list-item');
+            items.forEach(function(item) {
+                if (item.textContent.toUpperCase().indexOf(filter) > -1) {
+                    item.style.display = '';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+<html>
+    <a href="Form.html" style="background-color: darkred; color: silver;">Search</a>
+    <body style="text-align: left; color: silver;">button</body>
+</html>

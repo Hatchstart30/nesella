@@ -1,0 +1,109 @@
+Here’s an updated version of your HTML form that includes a list where users can select items, and the selected items will be added to the message part of the form when the submit button is clicked. This is achieved using JavaScript to dynamically update the message field based on the selected items.
+
+Copy the code
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Form</title>
+    <script>
+        function updateMessage() {
+            const selectedItems = Array.from(document.querySelectorAll('input[name="items"]:checked'))
+                .map(item => item.value)
+                .join(', ');
+
+            const messageField = document.querySelector('textarea[name="Contact-Message"]');
+            messageField.value = `Selected items: ${selectedItems}\n\n${messageField.value}`;
+        }
+    </script>
+</head>
+<body>
+    <form action="mailto:bebeucluke@gmail.com" method="POST" enctype="multipart/form-data" name="EmailForm">
+        <label for="Contact-Name">Name:</label><br>
+        <input type="text" size="19" name="Contact-Name" id="Contact-Name"><br><br>
+
+        <label for="Contact-number">Phone number:</label><br>
+        <input type="number" name="Contact-number" id="Contact-number"><br><br>
+
+        <label for="number-of-items">Number of items in pcs.:</label><br>
+        <input type="number" name="number of items" id="number-of-items"> pcs.<br><br>
+
+        <label>Select items:</label><br>
+        <input type="checkbox" name="items" value="Fishpie"> Fishpie<br>
+        <input type="checkbox" name="items" value="Meatpie"> Meatpie<br>
+        <input type="checkbox" name="items" value="Sausage Roll"> Sausage Roll<br>
+        <input type="checkbox" name="items" value="Chicken Pie"> Chicken Pie<br><br>
+
+        <label for="Contact-Message">Message:</label><br>
+        <textarea name="Contact-Message" rows="6" cols="20" id="Contact-Message"></textarea><br><br>
+
+        <button type="submit" value="Submit" onclick="updateMessage()">Send</button>
+    </form>
+</body>
+</html>
+
+
+Here is an enhanced version of your HTML form that includes a selectable list of items, an input field for specifying the quantity of each selected item, and dynamically appends the selected items and their quantities to the message field when the "Send" button is clicked:
+
+Copy the code
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Form</title>
+    <script>
+        function updateMessage() {
+            const selectedItems = document.querySelectorAll('#itemList option:checked');
+            const quantities = document.querySelectorAll('.item-quantity');
+            const messageField = document.querySelector('textarea[name="Contact-Message"]');
+            
+            let message = "Selected Items:\n";
+            selectedItems.forEach((item, index) => {
+                const quantity = quantities[index].value || 0;
+                message += `${item.value} - ${quantity} pcs\n`;
+            });
+
+            messageField.value = message;
+        }
+    </script>
+</head>
+<body>
+    <form action="mailto:bebeucluke@gmail.com" method="POST" enctype="multipart/form-data" name="EmailForm">
+        <label for="Contact-Name">Name:</label><br>
+        <input type="text" size="19" name="Contact-Name"><br><br>
+
+        <label for="Contact-number">Phone number:</label><br>
+        <input type="number" name="Contact-number"><br><br>
+
+        <label for="number-of-items">Number of items in pcs.:</label><br>
+        <input type="number" name="number of items"> pcs.<br><br>
+
+        <label for="itemList">Select Items:</label><br>
+        <select id="itemList" name="items" multiple size="5" onchange="updateMessage()">
+            <option value="Fishpie">Fishpie</option>
+            <option value="Meatpie">Meatpie</option>
+            <option value="Chickenpie">Chickenpie</option>
+            <option value="Sausage Roll">Sausage Roll</option>
+            <option value="Doughnut">Doughnut</option>
+        </select><br><br>
+
+        <label>Enter Quantity for Each Item:</label><br>
+        <input type="number" class="item-quantity" placeholder="Fishpie Quantity" onchange="updateMessage()"><br>
+        <input type="number" class="item-quantity" placeholder="Meatpie Quantity" onchange="updateMessage()"><br>
+        <input type="number" class="item-quantity" placeholder="Chickenpie Quantity" onchange="updateMessage()"><br>
+        <input type="number" class="item-quantity" placeholder="Sausage Roll Quantity" onchange="updateMessage()"><br>
+        <input type="number" class="item-quantity" placeholder="Doughnut Quantity" onchange="updateMessage()"><br><br>
+
+        <label for="Contact-Message">Message:</label><br>
+        <textarea name="Contact-Message" rows="6" cols="20">Fishpie</textarea><br><br>
+
+        <button type="submit" value="Submit" onclick="updateMessage()">Send</button>
+    </form>
+</body>
+</html>
+
+Explanation:
+Item Selection: A <select> element with the multiple attribute allows users to select multiple items.
+Quantity Input: Individual <input> fields for each item allow users to specify quantities.
+Dynamic Message Update: A JavaScript function (updateMessage) dynamically updates the message field with the selected items and their quantities whenever an item is selected or a quantity is entered.
+Submit Button: The onclick event ensures the message field is updated before submission.
+
+This setup ensures a user-friendly experience while maintaining functionality.

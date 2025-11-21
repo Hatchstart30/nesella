@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Background</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    .video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    .content {
+      position: relative;
+      color: white;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  </style>
+</head>
+<body>
+  <video class="video-background" autoplay muted loop>
+    <source src="y.crdownload" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="content">
+    <h1>Welcome to My Website</h1>
+    <p>Enjoy the immersive background experience!</p>
+  </div>
+</body>
+</html>
+
+
+
+
+
+Here’s an example of HTML code to create a list of buttons that link to other files in an html folder:
+
+Copy the code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .button-list button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f0f0f0;
+            transition: background-color 0.3s;
+        }
+        .button-list button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML File Links</h1>
+    <div class="button-list">
+        <button onclick="location.href='html/file1.html'">chin chin</button>
+        <button onclick="location.href='html/file2.html'">Go to File 2</button>
+        <button onclick="location.href='html/file3.html'">Go to File 3</button>
+        <button onclick="location.href='html/file4.html'">Go to File 4</button>
+    </div>
+</body>
+</html>
+
+Here’s an HTML code snippet to create a search bar that filters a list of buttons linking to files in the same folder. The search functionality is implemented using JavaScript to dynamically filter the buttons based on user input.
+
+Copy the code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Searchable File Links</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .search-bar {
+      margin-bottom: 20px;
+    }
+    .button-list button {
+      display: block;
+      margin: 5px 0;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .button-list button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Files</h1>
+  <input
+    type="text"
+    id="searchInput"
+    class="search-bar"
+    placeholder="Search files..."
+    onkeyup="filterButtons()"
+  />
+
+  <div class="button-list" id="buttonList">
+    <button onclick="window.location.href='file1.txt'">File 1</button>
+    <button onclick="window.location.href='file2.pdf'">File 2</button>
+    <button onclick="window.location.href='file3.docx'">File 3</button>
+    <button onclick="window.location.href='file4.jpg'">File 4</button>
+    <button onclick="window.location.href='file5.png'">File 5</button>
+  </div>
+
+  <script>
+    function filterButtons() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const buttons = document.querySelectorAll('#buttonList button');
+
+      buttons.forEach(button => {
+        const text = button.textContent.toLowerCase();
+        button.style.display = text.includes(input) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
+
+How It Works:
+Search Bar: The <input> element captures user input and triggers the filterButtons() function on every keystroke.
+Button List: Each button links to a file in the same folder using onclick with window.location.href.
+Filtering: The filterButtons() function compares the search input with the text of each button and hides buttons that don’t match.
+
+Feel free to customize the file names, styles, or functionality as needed!
+
+
+
+
+
+Here’s an example of an HTML code snippet that creates a list where you can select items, and then input the selected items into a form. This uses a <select> element with the multiple attribute to allow multiple selections, and JavaScript to handle the input of selected items into a form field.
+
+Copy the code
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selectable List with Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    select {
+      width: 200px;
+      height: 150px;
+    }
+    button {
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h2>Select Items and Submit</h2>
+  <form id="selectionForm" action="/submit" method="POST">
+    <label for="itemList">Choose items:</label><br>
+    <select id="itemList" name="items" multiple>
+      <option value="Item1">Item 1</option>
+      <option value="Item2">Item 2</option>
+      <option value="Item3">Item 3</option>
+      <option value="Item4">Item 4</option>
+      <option value="Item5">Item 5</option>
+    </select><br>
+    <input type="hidden" id="selectedItems" name="selectedItems">
+    <button type="button" onclick="submitSelectedItems()">Submit</button>
+  </form>
+
+  <script>
+    function submitSelectedItems() {
+      const selectElement = document.getElementById('itemList');
+      const selectedValues = Array.from(selectElement.selectedOptions).map(option => option.value);
+      document.getElementById('selectedItems').value = selectedValues.join(', ');
+      document.getElementById('selectionForm').submit();
+    }
+  </script>
+</body>
+</html>
+
+Explanation:
+
+HTML Structure:
+
+The <select> element with the multiple attribute allows users to select multiple items.
+A hidden <input> field (<input type="hidden">) is used to store the selected items in a comma-separated format.
+
+JavaScript:
+
+The submitSelectedItems() function retrieves the selected options using selectedOptions and converts them into an array of values.
+These values are joined into a string and assigned to the hidden input field before submitting the form.
+
+Styling:
+
+Basic CSS is added for better readability and usability.
+
+This code ensures that the selected items are properly submitted as part of the form data. You can customize the action URL (/submit) and method (POST) as needed.
+
+
+
+
+<html>
+    <style>
+        body {
+          background-image: url("c.jpg");
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }
+        </style>
+</html>

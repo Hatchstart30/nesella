@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Searchable File Links</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .search-bar {
+      margin-bottom: 20px;
+    }
+    .button-list button {
+      display: block;
+      margin: 5px 0;
+      padding: 10px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      text-align: left;
+    }
+    .button-list button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h1>Search Files</h1>
+  <input
+    type="text"
+    id="searchInput"
+    class="search-bar"
+    placeholder="Search files..."
+    onkeyup="filterButtons()"
+  />
+
+  <div class="button-list" id="buttonList">
+    <button onclick="window.location.href='chinchin.html'">Chin chin</button>
+    <button onclick="window.location.href='puffpuff.html'">Puff puff</button>
+    <button onclick="window.location.href='shawarma.html'">Shawarma</button>
+    <button onclick="window.location.href='cake.html'">Cake</button>
+    <button onclick="window.location.href='bread.html'">Bread</button>
+    <button onclick="window.location.href='pancake.html'">Pancakes</button>
+    <button onclick="window.location.href='meatpie.html'">Meatpie</button>
+    <button onclick="window.location.href='fishpie.html'">Fishpie</button>
+  </div>
+
+  <script>
+    function filterButtons() {
+      const input = document.getElementById('searchInput').value.toLowerCase();
+      const buttons = document.querySelectorAll('#buttonList button');
+
+      buttons.forEach(button => {
+        const text = button.textContent.toLowerCase();
+        button.style.display = text.includes(input) ? '' : 'none';
+      });
+    }
+  </script>
+</body>
+</html>
